@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const formLogin = document.getElementById('formLogin'); // Verifique se o ID no HTML é esse
+    const formLogin = document.getElementById('formLogin');
 
     if (formLogin) {
         formLogin.addEventListener('submit', async (e) => {
@@ -9,25 +9,27 @@ document.addEventListener('DOMContentLoaded', () => {
             const senha = document.getElementById('senha').value;
 
             try {
+                // Lembre-se de trocar para a URL do Railway quando fizer o deploy final
                 const response = await fetch('http://localhost:3000/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, senha })
                 });
 
-                const data = await response.json();
-
+                // VERIFICAÇÃO DE QA: Se o status não for 200-299, cai no else
                 if (response.ok) {
+                    const data = await response.json();
                     alert(`👋 Bem-vindo, ${data.user.nome}!`);
-                    // Salva os dados básicos na sessão para usar no sistema de ponto
                     localStorage.setItem('usuarioLogado', JSON.stringify(data.user));
-                    window.location.href = "dashboard.html"; // Ou sua tela principal
+                    window.location.href = "dashboard.html";
                 } else {
-                    alert("❌ Erro: " + (data.message || "Credenciais inválidas"));
+                    // Aqui pegamos a mensagem "Usuário não encontrado" ou "Senha incorreta"
+                    const errorText = await response.text();
+                    alert("❌ " + errorText);
                 }
             } catch (error) {
-                console.error("Erro ao logar:", error);
-                alert("Servidor offline!");
+                console.error("Erro na requisição:", error);
+                alert("Servidor offline! Ligue o backend.");
             }
         });
     }

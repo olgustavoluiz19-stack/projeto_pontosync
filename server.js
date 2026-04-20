@@ -44,28 +44,34 @@ app.post('/register', async (req, res) => {
 app.post('/login', (req, res) => {
     const { email, senha } = req.body;
 
-    // Buscando pela coluna 'login'
     const query = 'SELECT * FROM seguranca_tbUsuarios WHERE login = ?';
     
     db.query(query, [email], async (err, results) => {
         if (err) {
             console.error("❌ Erro no MySQL:", err.message);
-            return res.status(500).send("Erro no servidor.");
+            return res.status(500).send("Erro interno no servidor.");
         }
         
-        if (results.length === 0) return res.status(401).send("Usuário não encontrado.");
+        // Validação 1: Usuário existe?
+        if (results.length === 0) {
+            console.log(`⚠️ Tentativa de login falhou: Usuário ${email} não existe.`);
+            return res.status(401).send("E-mail não cadastrado.");
+        }
 
         const user = results[0];
+        
+        // Validação 2: Senha confere?
         const match = await bcrypt.compare(senha, user.senha);
 
         if (match) {
-            // Retorna o usuario_id conforme seu banco
+            console.log(`✅ Usuário logado: ${user.nome}`);
             res.json({ 
                 message: "Login bem-sucedido!", 
                 user: { id: user.usuario_id, nome: user.nome } 
             });
         } else {
-            res.status(401).send("Senha incorreta.");
+            console.log(`❌ Senha incorreta para o usuário: ${email}`);
+            res.status(401).send("Senha incorreta. Tente novamente.");
         }
     });
 });

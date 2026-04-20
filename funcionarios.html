@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PontoSync - Funcionários</title>
+    <link rel="icon" href="./imgs/clock.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="funcionarios.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-clock logo-icon"></i>
+                <span class="logo-text">PontoSync</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-link"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
+                <a href="funcionarios.html" class="nav-link active"><i class="fa-solid fa-users"></i> Funcionários</a>
+                <a href="equipes.html" class="nav-link"><i class="fa-solid fa-user-group"></i> Equipes</a>
+                <a href="registros.html" class="nav-link"><i class="fa-solid fa-address-book"></i> Registros</a>
+                <a href="relatorios.html" class="nav-link"><i class="fa-solid fa-chart-line"></i> Relatórios</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="nav-link logout"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <h1 class="page-title">Funcionários</h1>
+            </header>
+
+            <section class="content-body">
+                <div class="action-bar">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Buscar por nome ou CPF...">
+                    </div>
+                    <button class="btn-primary" onclick="abrirModal()">
+                        <i class="fa-solid fa-plus"></i> Novo Funcionário
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table class="employees-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>Telefone</th>
+                                <th>Tipo</th>
+                                <th class="text-right">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-funcionarios">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-funcionario" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Novo Funcionário</h2>
+                <button class="close-modal" onclick="fecharModal()">&times;</button>
+            </div>
+            <form id="form-funcionario" class="modal-body">
+                <div class="form-group full-width">
+                    <label>Nome *</label>
+                    <input type="text" id="modal-nome" placeholder="Nome completo" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>CPF</label>
+                        <input type="text" id="modal-cpf" placeholder="000.000.000-00" oninput="mascaraCPF(this)" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="text" id="modal-tel" placeholder="(00) 00000-0000" oninput="mascaraTelefone(this)" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nascimento</label>
+                        <input type="date" id="modal-nascimento" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select id="modal-tipo" required>
+                            <option value="" disabled selected>Selecione</option>
+                            <option value="Colaborador">Colaborador</option>
+                            <option value="Gerente">Gerente</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="RH">RH</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancelar" onclick="fecharModal()">Cancelar</button>
+                    <button type="submit" class="btn-salvar">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="funcionarios.js"></script>
+</body>
+</html>

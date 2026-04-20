@@ -1,0 +1,400 @@
+/* ==========================================================================
+   CONFIGURAÇÕES GERAIS E RESETS
+   ========================================================================== */
+:root {
+    /* Cores principais baseadas nas imagens */
+    --primary-blue: #2563eb; /* Azul dos botões e destaque */
+    --primary-blue-hover: #1d4ed8;
+    --text-dark: #1f2937; /* Cinza quase preto para títulos */
+    --text-gray: #6b7280; /* Cinza para parágrafos */
+    --bg-light: #f9fafb; /* Cinza muito claro para seções alternadas */
+    --white: #ffffff;
+    --border-color: #e5e7eb;
+    
+    /* Fontes */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* Funcionalidade principal solicitada: Rolagem Suave */
+    scroll-behavior: smooth;
+    font-family: var(--font-family);
+    color: var(--text-dark);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+body {
+    background-color: var(--white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center { text-align: center; }
+.bg-light { background-color: var(--bg-light); }
+
+a { text-decoration: none; color: inherit; transition: color 0.2s; }
+ul { list-style: none; }
+
+/* ==========================================================================
+   COMPONENTES (Botões e Títulos)
+   ========================================================================== */
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--white) !important;
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-blue-hover);
+}
+
+.btn-small { padding: 8px 16px; font-size: 0.9rem; }
+.btn-medium { padding: 12px 24px; font-size: 1rem; }
+.btn-large { padding: 16px 32px; font-size: 1.1rem; }
+
+.btn-text {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-right: 20px;
+}
+.btn-text:hover { color: var(--primary-blue); }
+
+.arrow { margin-left: 8px; font-size: 1.2em; }
+
+/* Títulos das Seções */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    margin-bottom: 60px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==========================================================================
+   HEADER (Referência: image_0.png)
+   ========================================================================== */
+.main-header {
+    position: fixed; /* Fixa o header no topo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95); /* Leve transparência */
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000; /* Garante que fique sobre o conteúdo */
+    height: 80px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Aumentei um pouco o espaçamento entre ícone e texto */
+}
+
+.logo-icon {
+    display: flex; /* Para centralizar o ícone perfeitamente dentro do fundo */
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 1.25rem; /* Tamanho do ícone menor agora */
+    color: var(--white); /* Ícone branco */
+    
+    /* Configurações do fundo azul solicitadas */
+    background-color: var(--primary-blue); /* Fundo azul do projeto */
+    width: 40px; /* Tamanho total do bloco do logo */
+    height: 40px;
+    border-radius: 10px; /* Bordas arredondadas (como na imagem) */
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    font-weight: 500;
+    color: var(--text-gray);
+}
+
+.main-nav a:hover {
+    color: var(--primary-blue);
+}
+
+/* ==========================================================================
+   HERO SECTION (Referência: image_0.png)
+   ========================================================================== */
+.hero-section {
+    padding-top: 160px; /* Espaço para o header fixo + respiro */
+    padding-bottom: 100px;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.status-badge .dot {
+    height: 8px;
+    width: 8px;
+    background-color: #10b981; /* Verde status */
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+}
+
+.hero-title .highlight {
+    color: var(--primary-blue);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-gray);
+    margin-bottom: 40px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estatísticas Rápida */
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 80px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+/* Placeholder para o ícone de infinito */
+.icon-infinity::before {
+    content: "∞";
+    font-size: 1.2em;
+}
+
+/* ==========================================================================
+   RECURSOS SECTION (Referência: image_1.png)
+   ========================================================================== */
+.features-section {
+    padding: 100px 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilização básica dos ícones placeholder baseada nas cores da imagem */
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+}
+
+/* Cores e conteúdo dos ícones placeholder (Substituir por SVGs depois) */
+.icon-clock { background-color: #e0f2fe; color: #0284c7; }
+.icon-clock::before { content: "🕒"; }
+
+.icon-users { background-color: #e0f2fe; color: #0284c7; }
+.icon-users::before { content: "👥"; }
+
+.icon-chart { background-color: #e0f2fe; color: #0284c7; }
+.icon-chart::before { content: "📊"; }
+
+.icon-shield { background-color: #e0f2fe; color: #0284c7; }
+.icon-shield::before { content: "🛡️"; }
+
+.feature-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.feature-card-text {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   BENEFÍCIOS SECTION (Referência: image_2.png)
+   ========================================================================== */
+.benefits-section {
+    padding: 100px 0;
+}
+
+.benefits-content {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+
+.benefits-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: x; /* Ajuste manual para alinhar com a imagem */
+    column-gap: 40px;
+    row-gap: 20px;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: center;
+    font-size: 1.05rem;
+    color: var(--text-gray);
+}
+
+.check-icon {
+    color: #10b981; /* Verde dos checks */
+    font-weight: bold;
+    margin-right: 12px;
+    font-size: 1.2rem;
+}
+
+.cta-area {
+    margin-top: 60px;
+}
+
+/* ==========================================================================
+   FOOTER (Referência: image_2.png)
+   ========================================================================== */
+.main-footer {
+    padding: 60px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 1px;
+}
+
+.logo-icon-small {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1rem; /* Ícone menor */
+    color: var(--white); /* Ícone branco */
+    
+    background-color: var(--primary-blue); /* Fundo azul */
+    width: 32px; /* Bloco menor no footer */
+    height: 32px;
+    border-radius: 8px; /* Bordas um pouco menos arredondadas proporcionalmente */
+}
+
+.logo-text-small {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    /* Removi o padding antigo daqui para usar o gap do pai */
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE BÁSICA
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    .section-title { font-size: 2rem; }
+    
+    .main-nav { display: none; } /* Oculta menu em telas pequenas por simplicidade */
+    
+    .stats-grid { gap: 30px; flex-wrap: wrap; }
+    
+    .benefits-list { grid-template-columns: 1fr; } /* Uma coluna em mobile */
+}

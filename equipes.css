@@ -1,0 +1,322 @@
+/* Reutilizando variáveis e resets básicos */
+:root {
+    --sidebar-bg: #111827;
+    --main-bg: #f8fafc;
+    --primary-blue: #2563eb;
+    --text-dark: #1f2937;
+    --text-gray: #64748b;
+    --white: #ffffff;
+    --border: #e2e8f0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: var(--main-bg); }
+.wrapper { display: flex; min-height: 100vh; }
+
+/* SIDEBAR PADRONIZADA (Igual a Funcionários) */
+.sidebar { width: 260px; background-color: var(--sidebar-bg); color: white; display: flex; flex-direction: column; padding: 20px; position: fixed; height: 100vh; }
+.sidebar-header { display: flex; align-items: center; gap: 10px; margin-bottom: 40px; }
+
+/* Logo com fundo azul solicitado anteriormente */
+.logo-icon { background: var(--primary-blue); padding: 8px; border-radius: 8px; font-size: 1.2rem; }
+
+.logo-text { font-weight: 700; font-size: 1.2rem; }
+
+.sidebar-nav { flex: 1; }
+.nav-link { display: flex; align-items: center; gap: 12px; padding: 12px 15px; color: #9ca3af; text-decoration: none; border-radius: 8px; margin-bottom: 5px; transition: 0.3s; }
+
+.nav-link:hover, .nav-link.active { background: #1f2937; color: white; }
+.nav-link.active { color: var(--primary-blue); }
+
+.sidebar-footer { border-top: 1px solid #1f2937; padding-top: 20px; }
+.logout { color: #f87171; }
+
+.main-content { margin-left: 260px; flex: 1; padding: 40px; }
+
+.top-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; 
+font-size: 14px;}
+
+/* ESTADO VAZIO */
+.empty-state { text-align: center; color: var(--text-gray); margin-top: 100px; font-size: 1.1rem; }
+
+/* GRID DE EQUIPES */
+.content-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+/* CARD DA EQUIPE (Baseado na image_2.png) */
+.equipe-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.equipe-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.equipe-icon-box {
+    background: #eff6ff;
+    color: var(--primary-blue);
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.equipe-nome {
+    font-size: 1.2rem;
+    font-weight: 700;
+    flex: 1;
+}
+
+.equipe-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-card-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-gray);
+    transition: 0.2s;
+}
+
+.btn-card-icon.delete:hover { color: #ef4444; }
+.btn-card-icon.edit:hover { color: var(--primary-blue); }
+
+/* BOTÃO GERENCIAR MEMBROS */
+.btn-manage {
+    width: 100%;
+    background: #fcfcfc;
+    border: 1px solid var(--border);
+    padding: 10px;
+    border-radius: 8px;
+    color: var(--text-dark);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+.btn-manage:hover { background: #f1f5f9; }
+
+/* MODAL (Padrão) */
+.modal-body input[type="text"] {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background-color: #fcfcfc;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+.modal-body input[type="text"]:focus {
+    border-color: var(--primary-blue);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px; /* Respiro extra acima dos botões */
+}
+.modal-body select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px; /* Mais arredondado conforme a foto */
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+.modal-body input[type="text"]:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+#modal-membros .modal-content {
+    max-width: 550px;
+    width: 90%;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+}
+.membro-selection-card:hover {
+    background-color: #f8fafc;
+}
+
+/* Quando o checkbox estiver marcado, podemos dar um destaque no card */
+.membro-selection-card input[type="checkbox"]:checked + .membro-info .nome {
+    color: var(--primary-blue);
+}
+/* Estilização dos Cards de Seleção de Membros */
+.membro-selection-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+/* Ajuste no grupo do formulário */
+.form-group.full-width {
+    margin-bottom: 25px; /* Afasta o campo de input dos botões de baixo */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px; /* Afasta o rótulo "Nome da Equipe" do campo de texto */
+    font-weight: 500;
+    color: var(--text-dark);
+}
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 2000; }
+.modal-content.small-modal { max-width: 500px; width: 90%; background: white; padding: 30px; border-radius: 15px; }
+.modal-header { display: flex; justify-content: space-between; margin-bottom: 20px; }
+.modal-header h2 {
+    margin-bottom: 25px; /* Sobe o título e afasta do conteúdo abaixo */
+    font-size: 1.5rem;
+}
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--text-gray);
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-modal:hover {
+    color: var(--text-dark);
+}
+.btn-primary, .btn-salvar { background: var(--primary-blue); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.2s;}
+.btn-primary:hover {
+    background: #1d4ed8;
+}
+.btn-cancelar {
+    background: #fff;
+    border: 1px solid var(--border);
+    color: var(--text-dark);
+}
+.btn-salvar {
+    background: var(--primary-blue);
+    border: none;
+    transition: transparent 0.2s, background 0.2s;
+}
+.btn-salvar:hover {
+    background: #1d4ed8;
+}
+.btn-cancelar, .btn-salvar {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.membros-checklist {
+    max-height: 350px; /* Altura máxima antes de dar scroll */
+    overflow-y: auto; /* Scroll vertical apenas */
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fcfcfc;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+.membro-selection-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.membro-selection-card:last-child {
+    border-bottom: none;
+}
+
+/* Efeito ao passar o mouse */
+.membro-selection-card:hover {
+    background: #f8fafc;
+}
+/* Checkbox estilizado */
+.membro-selection-card input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    accent-color: var(--primary-blue); /* Cor do check */
+}
+
+.membro-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+}
+
+.membro-item:last-child { border-bottom: none; }
+.membro-item:hover { background: #f8fafc; }
+
+.membro-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.membro-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.membro-info .nome {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 3px;
+}
+
+.membro-info .cargo {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+}
+.empty-list-msg {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}

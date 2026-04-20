@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PontoSync - Dashboard</title>
+    <link rel="icon" href="./imgs/clock.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-clock logo-icon"></i>
+                <span class="logo-text">PontoSync</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-link active"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
+                <a href="funcionarios.html" class="nav-link"><i class="fa-solid fa-users"></i> Funcionários</a>
+                <a href="equipes.html" class="nav-link"><i class="fa-solid fa-user-group"></i> Equipes</a>
+                <a href="registros.html" class="nav-link"><i class="fa-solid fa-address-book"></i> Registros</a>
+                <a href="relatorios.html" class="nav-link"><i class="fa-solid fa-chart-line"></i> Relatórios</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="nav-link logout"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <h1 class="page-title">Dashboard</h1>
+            </header>
+
+            <section class="content-body">
+                <div class="welcome-row">
+                    <div class="welcome-text">
+                        <h2>Boa tarde 👋</h2>
+                        <p id="current-date">quinta-feira, 09 de abril de 2026</p>
+                    </div>
+                    <div class="clock-display">
+                        <i class="fa-regular fa-clock"></i>
+                        <span id="live-clock">15:10:33</span>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="fa-solid fa-user-plus"></i></div>
+                        <div class="stat-info">
+                            <h3>3</h3>
+                            <p>Funcionários</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="fa-solid fa-wave-square"></i></div>
+                        <div class="stat-info">
+                            <h3>0</h3>
+                            <p>Equipes</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon light-green"><i class="fa-solid fa-arrow-left"></i></div>
+                        <div class="stat-info">
+                            <h3>0</h3>
+                            <p>Entradas Hoje</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon yellow"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="stat-info">
+                            <h3>0</h3>
+                            <p>Saídas Hoje</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon soft-blue"><i class="fa-solid fa-user-check"></i></div>
+                        <div class="stat-info">
+                            <h3>0</h3>
+                            <p>Presentes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="register-ponto-card">
+                        <div class="register-header">
+                            <h3>Registrar Ponto</h3>
+                            <p>Selecione o funcionário e registre</p>
+                        </div>
+                        <div class="register-body">
+                            <select class="form-select">
+                                <option selected disabled>Selecione o funcionário...</option>
+                                <option>João Silva</option>
+                                <option>Maria Oliveira</option>
+                            </select>
+                            <div class="action-buttons">
+                                <button class="btn-action green"><i class="fa-solid fa-arrow-left"></i> Entrada</button>
+                                <button class="btn-action red"><i class="fa-solid fa-arrow-right"></i> Saída</button>
+                            </div>
+                            <div class="daily-summary">
+                                <h4><i class="fa-solid fa-chart-line"></i> RESUMO DO DIA</h4>
+                                <div class="summary-stats">
+                                    <div class="sum-item"><strong>0</strong><br><span>Entradas</span></div>
+                                    <div class="sum-item"><strong>0</strong><br><span>Saídas</span></div>
+                                    <div class="sum-item"><strong>0</strong><br><span>Presentes</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="log-card">
+                        <div class="log-header">
+                            <h3><i class="fa-regular fa-calendar"></i> Registros de Hoje</h3>
+                            <span class="badge">0 registros</span>
+                        </div>
+                        <div class="log-empty">
+                            <i class="fa-regular fa-clock"></i>
+                            <p>Nenhum registro hoje</p>
+                            <span>Os registros aparecerão aqui</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

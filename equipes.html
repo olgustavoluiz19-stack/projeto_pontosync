@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PontoSync - Equipes</title>
+    <link rel="icon" href="./imgs/clock.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="equipes.css">
+</head>
+<body>
+
+    <div class="wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-clock logo-icon"></i>
+                <span class="logo-text">PontoSync</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-link"><i class="fa-solid fa-table-columns"></i> Dashboard</a>
+                <a href="funcionarios.html" class="nav-link"><i class="fa-solid fa-users"></i> Funcionários</a>
+                <a href="equipes.html" class="nav-link active"><i class="fa-solid fa-user-group"></i> Equipes</a>
+                <a href="registros.html" class="nav-link"><i class="fa-solid fa-address-book"></i> Registros</a>
+                <a href="relatorios.html" class="nav-link"><i class="fa-solid fa-chart-line"></i> Relatórios</a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="nav-link logout"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <h1 class="page-title">Equipes</h1>
+                <button class="btn-primary" onclick="abrirModalEquipe()">
+                    <i class="fa-solid fa-plus"></i> Nova Equipe
+                </button>
+            </header>
+
+            <section class="content-body" id="equipes-container">
+                <div class="empty-state">
+                    <p>Nenhuma equipe cadastrada</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-equipe" class="modal-overlay">
+        <div class="modal-content small-modal">
+            <div class="modal-header">
+                <h2 id="modal-titulo">Nova Equipe</h2>
+                <button class="close-modal" onclick="fecharModalEquipe()">&times;</button>
+            </div>
+            <form id="form-equipe" class="modal-body">
+                <div class="form-group full-width">
+                    <label>Nome da Equipe *</label>
+                    <input type="text" id="equipe-nome" placeholder="Ex: RH, TI, Vendas" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancelar" onclick="fecharModalEquipe()">Cancelar</button>
+                    <button type="submit" class="btn-salvar">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-membros" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Gerenciar Membros - <span id="nome-equipe-membro"></span></h2>
+                <button class="close-modal" onclick="fecharModalMembros()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 15px; color: var(--text-gray); font-size: 0.9rem;">
+                    Selecione os funcionários que fazem parte desta equipe:
+                </p>
+                <div id="lista-funcionarios-disponiveis" class="membros-checklist"></div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancelar" onclick="fecharModalMembros()">Fechar</button>
+                    <button type="button" class="btn-salvar" onclick="salvarMembros()">Salvar Membros</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="equipes.js"></script>
+</body>
+</html>
